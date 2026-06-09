@@ -3,7 +3,6 @@
 # Threat Neutralization System (ACRTS)
 # Team  : Jahnavi Singh, Darsh Bindra,
 #          Aayushi Malik, Mohini
-# Repo  : https://github.com/AayushiM3/ACRTS
 # Version: 1.0
 # ============================================
 
