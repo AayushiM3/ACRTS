@@ -1,20 +1,30 @@
 # ACRTS - Adaptive Cyber Resilience and Automated Threat Neutralization System
-We built a tool that reads system logs, detects 
-common attacks, maps them to MITRE ATT&CK, and 
-shows everything on a dashboard
+ACRTS is a Python-based cybersecurity incident response platform designed to automate log analysis, attack detection, risk assessment, MITRE ATT&CK mapping, and incident reporting. The system processes logs from multiple sources, identifies suspicious activity using detection rules, assigns contextual risk scores, and presents findings through an interactive dashboard.
 
 ## Team
-| Name | Role |
-| Jahnavi Singh | Detection Logic & Architecture |
-| Darsh Bindra | Backend Developer & Detection Engine |
-| Aayushi Malik | Database & Report Module Developer |
-| Mohini | Dashboard & Frontend Developer |
+Name and Primary Responsibility
+- Jahnavi Singh: Detection Logic & System Architecture
+- Darsh Bindra:	Backend Development & Log Parsing
+- Aayushi Malik:	Database, Risk Scoring & Reporting
+- Mohini:	Dashboard & Frontend Development
 
-## About This Project
-We are cybersecurity students doing our minor project. We wanted something hands-on while we were learning incident response in class. We split responsibilities across system design, backend rules, log parsing, and the UI so everything fit together.
+## Contributions
+As the primary contributor for the database, risk analysis, and reporting modules, I:
 
-## What It Does
-Parses plain text logs, spots common attacks, maps them to MITRE, saves them to SQLite, and shows them in a Streamlit dashboard. It also prints demo response actions so we can walk through playbooks in class.
+- Designed and implemented the SQLite-based persistence layer for storing and retrieving security incidents.
+- Developed a context-aware risk scoring engine that evaluates incidents using attack type, time-based weighting, and repeated source activity.
+- Built automated PDF report generation for incident summaries and security reporting workflows.
+- Contributed to system integration, testing, and validation across detection, backend, and dashboard modules.
+
+## Key Features
+- Multi-source log parsing (Windows, Linux, and Apache logs)
+- Rule-based attack detection and classification
+- MITRE ATT&CK technique mapping
+- Context-aware risk scoring
+- SQLite-backed incident storage
+- Interactive Streamlit dashboard
+- Automated PDF report generation
+- Simulated incident response actions
 
 ## MITRE ATT&CK Mapping
 MITRE is that huge list of attacker tactics and techniques. We mapped the detections to IDs so we remember which tactic matches what.
@@ -27,18 +37,10 @@ MITRE is that huge list of attacker tactics and techniques. We mapped the detect
 | Privilege Escalation | T1068 | Privilege Escalation |
 | C2C Activity | T1071 | Command and Control |
 
-## Features
-- Parses Windows event-like text, Linux auth logs, and Apache access logs.
-- Detects brute force, RDP tunneling, C2C process chains, SQL injection, port scanning, and privilege escalation.
-- Scores risk with time-of-day and IP repetition bumps.
-- Saves everything to SQLite so nothing gets lost between runs.
-- Streamlit dashboard with charts, MITRE columns, and a quick PDF download.
+
 
 ## Tech Stack
-Python 3, SQLite, Streamlit, pandas, Altair, fpdf2. No admin rights needed on Mac.
-
-## How It Works
-We ask you which log to read, parse it, run the detection rules, score risk, take a demo action (like "block"), store it in the database, and then you can open the dashboard to see everything.
+Python, SQLite, Streamlit, Pandas, Altair, FPDF2, Regex
 
 ## Project Structure
 ```
@@ -65,17 +67,12 @@ README.md             # this doc
 5. `streamlit run dashboard.py` to open the dashboard. Keep the terminal open because Streamlit needs it.
 6. If you want a PDF, use the download button in the dashboard after you have incidents.
 
-## Sample Logs
-`sample_logs/` has Windows-style event lines, Linux sshd lines, and Apache access hits with fake attacks. The log parsing part gave us a headache at first, but now it is just plain text so it stays Mac-friendly.
-
-## What We Learned
-We spent a lot of time tuning regex and counts. Streamlit is actually really fun to work with. Risk scoring is harder than it looks when you only have log lines.
-
 ## Future Ideas
 - Add GeoIP and ASN context for the IPs.
 - Hook in a real mail sender when not in demo mode.
 - Add more web attack patterns and maybe DNS logs.
 
-## Contact
-GitHub: https://github.com/jahnavi-37  
+## Acknowledgements
+Developed as part of a university minor project in cybersecurity with a focus on incident response, threat detection, and security automation.
+
 Raise an issue for any problems. Also feel free to use this or suggest improvements.
